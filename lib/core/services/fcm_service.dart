@@ -9,8 +9,7 @@ class FcmService {
   final url = "https://fcm.googleapis.com/fcm/send";
   final _domain = "fcm.googleapis.com";
   final _subDomain = "fcm/send";
-  final _serverKey =
-      "AAAAotpOYEw:APA91bG21eCp2X0GUi18yBFhuTyAzydgO3QVm7WFQBsYgQr8eruHhctWN9wRk8RE-AOQXCJHl0V1c054aUjlxENqxN8tU8aix_xzjsPbxgwb_rjSiaTa7HfaXWVBqB1mvmfEpMuypb3q";
+  final _serverKey = "<SERVER KEY>";
 
 // Method to send push notification
   Future sendPushNotification() async {

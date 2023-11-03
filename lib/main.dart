@@ -22,6 +22,9 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await setupLocator();
+
   await FirebaseMessaging.instance.getInitialMessage();
 
   await _pushMessagingNotification.initialize();
