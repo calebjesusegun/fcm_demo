@@ -24,25 +24,25 @@ class LoginViewModel extends ChangeNotifier {
     return auth.currentUser!.email!;
   }
 
-  void isUserLoggingIn(bool val) {
+  void isBusy(bool val) {
     _isLoading = val;
     notifyListeners();
   }
 
   Future<String?> login(String email, String password) async {
     try {
-      isUserLoggingIn(true);
+      isBusy(true);
       await auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      notifyListeners();
+      isBusy(false);
       return null;
     } on FirebaseAuthException catch (e) {
-      isUserLoggingIn(false);
+      isBusy(false);
       return e.message;
     } catch (e) {
-      isUserLoggingIn(false);
+      isBusy(false);
       return e.toString();
     }
   }
@@ -54,8 +54,9 @@ class LoginViewModel extends ChangeNotifier {
 
   Future sendPushNotification() async {
     try {
+      isBusy(true);
       var data = await _fcmService.sendPushNotification();
-      isUserLoggingIn(false);
+      isBusy(false);
       notifyListeners();
       PushNotificationModel pushNotificationModel =
           PushNotificationModel.fromJson(data);
@@ -63,7 +64,7 @@ class LoginViewModel extends ChangeNotifier {
         return data;
       }
     } catch (e) {
-      AppNavigator.pushNamedReplacement(homeRoute);
+     AppNavigator.pushNamedReplacement(startupRoute);
     }
   }
 }

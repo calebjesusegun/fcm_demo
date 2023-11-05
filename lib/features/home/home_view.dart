@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SvgPicture.asset("assets/success.svg", width: 120),
+              SvgPicture.asset("asset/success.svg", width: 120),
               const SizedBox(
                 height: 12,
               ),
